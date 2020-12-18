@@ -1,6 +1,8 @@
-# braintapper-svelte-componentname
+# braintapper-svelte-tippy
 
-Brief description here
+Svelte component for using [Tippy.js](https://atomiks.github.io/tippyjs/) for popover controls.
+
+
 
 
 # Usage
