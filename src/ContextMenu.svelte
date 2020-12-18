@@ -1,31 +1,31 @@
-<script lang="coffeescript">
+<script>
 
-  import { createEventDispatcher, onMount } from "svelte"
-  dispatch = createEventDispatcher()
+  import { createEventDispatcher, onMount } from "svelte";
+  let dispatch = createEventDispatcher();
 
-  import TippyCss from "./Css.svelte"
-  import tippy from 'tippy.js'
+  import TippyCss from "./Css.svelte";
+  import tippy from 'tippy.js';
 
-  mounted = false
-  onMount ()->
-    mounted = true
+  let mounted = false;
 
-  export template = undefined
-  export theme = "context-menu"
+  onMount(()=>{
+    mounted = true;
+  })
 
-  # allow binding from parent
+  export let template = undefined;
+  export let theme = "popover";
 
-  export tippyObject = undefined
-  export tippyComponent = undefined
-  export tippyContent = undefined
+  // allow binding from parent
+
+  export let tippyObject = undefined;
+  export let tippyComponent = undefined;
+  export let tippyContent = undefined;
   
-  export style = undefined
-  export classes = undefined
-  export id = undefined
+  export let style = undefined;
+  export let classes = undefined;
+  export let id = undefined;
 
-
-
-  export options = 
+  export let options = {
     theme: theme
     trigger: "click"
     placement: "right-start"
@@ -40,69 +40,67 @@
         }
 
       ]
-    onCreate: (instance) ->
-      tippyComponent = new tippyContent(target: instance.popper.querySelector('.tippy-content'))
-      dispatch "create"
+    onCreate: (instance) => {
+      tippyComponent = new tippyContent(target: instance.popper.querySelector('.tippy-content'));
+      dispatch("create");
 
       tippyComponent.$on "tippy-event",  (e) ->
         # console.log 'tippy-event'1
         # console.log e.detail
         tippyObject.hide()
-        dispatch e.detail.event, e.detail.value
+        dispatch(e.detail.event, e.detail.value);
       return      
-
-    onHide: (instance)->
-      # tippyObject.destroy()
-      dispatch "hide"
-
-
-    onShow: (instance) ->
-      dispatch "show"
-
-
-  popover = (element, content) ->
-    tippyContent = content
+    }
+    onHide: (instance)-> {
+      dispatch("hide");
+    }
+    onShow: (instance) -> {
+      dispatch("show");
+    }
+  }
 
 
-    unless (typeof content == 'function')
-
-      options.content = content
+  let popover = (element, content)=> {
+    tippyContent = content;
     
-    if Object.keys(options).length == 0
+    if !(typeof content == 'function') {
+      options.content = content;
+    }
+
+    
+    if (Object.keys(options).length == 0) {
       tippyObject = tippy(element)
-    else
+    } else {
       tippyObject = tippy(element, options)
+    }
 
-
-    element.addEventListener "click", (event)->
-      tippyObject.setProps 
-        getReferenceClientRect: () ->
+    element.addEventListener("click", (event)-> {
+      tippyObject.setProps({
+        getReferenceClientRect: () => {
           return {
-            height: 0
-            top: event.clientY
-            bottom: event.clientY
-            left: event.clientX
+            height: 0,
+            top: event.clientY,
+            bottom: event.clientY,
+            left: event.clientX,
             right: event.clientX
           }
-      tippyObject.show()
+        }
+      });
+      tippyObject.show();
 
     return
     {
       update: (params) ->
-        console.error "update"
-        dispatch "update"
-        #if tippyComponent
-        #  tippyComponent.$set { dateValue: newValue }
-
+        dispatch("update");
         return
+
       destroy: ->
-        # tippyObject.destroy()
-        console.error "tippy destroy"
-        dispatch "destroy"
+        tippyObject.destroy()
+        dispatch("destroy");
 
     }
 
-  
+  }  
 
 
 </script>

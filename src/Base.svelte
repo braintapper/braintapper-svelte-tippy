@@ -1,7 +1,6 @@
 <script>
 
   import { createEventDispatcher, onMount } from "svelte";
-  
   let dispatch = createEventDispatcher();
 
   import TippyCss from "./Css.svelte";
@@ -26,6 +25,8 @@
   export let classes = undefined;
   export let id = undefined;
 
+
+  export let events = {};
 
 
   export let options = {
