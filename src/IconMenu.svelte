@@ -100,16 +100,16 @@
 <style lang="sass">
 
 
-  button 
-    display: inline-block
-    padding: 0px
+button 
+  display: inline-block
+  padding: 0px
+  background: none
+  height: 24px
+  min-width: 24px
+  width: 24px
+  border: none
+  margin: 0px
+  &:hover 
     background: none
-    height: 24px
-    min-width: 24px
-    width: 24px
-    border: none
-    margin: 0px
-    &:hover 
-      background: none
 
 </style>
