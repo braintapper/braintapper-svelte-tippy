@@ -26,35 +26,34 @@
   export let id = undefined;
 
   export let options = {
-    theme: theme
-    trigger: "click"
-    placement: "right-start"
-    interactive: true
-    offset: [0,0]
-    popperOptions:
+    theme: theme,
+    trigger: "click",
+    placement: "right-start",
+    interactive: true,
+    offset: [0,0],
+    popperOptions: {
       modifiers: [
         {
-          name: "flip"
-          options:
-            fallbackPlacements: ["top","right","left"]
+          name: "flip",
+          options: {fallbackPlacements: ["top","right","left"]}
         }
 
       ]
+    },
     onCreate: (instance) => {
-      tippyComponent = new tippyContent(target: instance.popper.querySelector('.tippy-content'));
+      tippyComponent = new tippyContent({target: instance.popper.querySelector('.tippy-content')});
       dispatch("create");
 
-      tippyComponent.$on "tippy-event",  (e) ->
-        # console.log 'tippy-event'1
-        # console.log e.detail
-        tippyObject.hide()
+      tippyComponent.$on("tippy-event", (e) => {
+        tippyObject.hide();
         dispatch(e.detail.event, e.detail.value);
+      });
       return      
-    }
-    onHide: (instance)-> {
+    },
+    onHide: (instance)=> {
       dispatch("hide");
-    }
-    onShow: (instance) -> {
+    },
+    onShow: (instance)=> {
       dispatch("show");
     }
   }
@@ -63,7 +62,7 @@
   let popover = (element, content)=> {
     tippyContent = content;
     
-    if !(typeof content == 'function') {
+    if (typeof content != 'function') {
       options.content = content;
     }
 
@@ -74,7 +73,7 @@
       tippyObject = tippy(element, options)
     }
 
-    element.addEventListener("click", (event)-> {
+    element.addEventListener("click", (event)=> {
       tippyObject.setProps({
         getReferenceClientRect: () => {
           return {
@@ -88,19 +87,20 @@
       });
       tippyObject.show();
 
-    return
-    {
-      update: (params) ->
+
+    })
+    return {
+      update: (params) => {
+        console.error("update");
         dispatch("update");
         return
-
-      destroy: ->
+      },
+      destroy: () => {
         tippyObject.destroy()
         dispatch("destroy");
-
-    }
-
-  }  
+      }
+    }      
+  }
 
 
 </script>

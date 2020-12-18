@@ -41,7 +41,7 @@
       tippyComponent.$on("tippy-event", (e) => {
         tippyObject.hide();
         dispatch(e.detail.event, e.detail.value);
-      })
+      });
       return      
     },
     onHide: (instance)=> {

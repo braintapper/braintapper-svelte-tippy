@@ -26,11 +26,10 @@
   export let style = undefined;
   export let classes = undefined;
   export let id = undefined;
+  export let disabled = false;
 
 
   export let events = {};
-
-
 
   export let options = {
     theme: theme,
@@ -63,8 +62,6 @@
       dispatch("show");
     }
   }
-
-
 
   let popover = (element, content)=> {
 
