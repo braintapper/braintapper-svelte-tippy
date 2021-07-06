@@ -13,7 +13,7 @@
 :global([data-tippy-root]) {
   max-width: calc(100vw - 10px); }
 
-:globla(.tippy-box) {
+:global(.tippy-box) {
   position: relative;
   background-color: var(--tooltip-background);
   color: var(--tooltip-foreground);

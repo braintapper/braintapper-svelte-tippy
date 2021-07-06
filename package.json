@@ -1,6 +1,6 @@
 {
     "name": "braintapper-svelte-tippy",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Svelte component for using Tippy.js for popover controls.",
     "author": "braintapper",
     "license": "MIT",
