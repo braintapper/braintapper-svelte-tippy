@@ -26,7 +26,7 @@
   export let id = undefined;
 
 
-  export let events = {};
+  //export let events = {};
 
 
   export let options = {

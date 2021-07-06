@@ -29,7 +29,7 @@
   export let disabled = false;
 
 
-  export let events = {};
+  // export let events = {};
 
   export let options = {
     theme: theme,
