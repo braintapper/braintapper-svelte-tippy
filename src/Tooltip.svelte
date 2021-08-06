@@ -1,11 +1,16 @@
 <script>
+  /*
+    <TippyTooltip 
 
+  */
   import { createEventDispatcher, onMount } from "svelte";
   let dispatch = createEventDispatcher();
 
   import TippyCss from "./Css.svelte";
+  import TooltipTemplate from "./_TooltipTemplate.svelte";
   import tippy from 'tippy.js';
 
+  
   let mounted = false;
 
   onMount(()=>{
@@ -26,13 +31,20 @@
   export let id = undefined;
 
 
+  export let position = "bottom-start"
+  export let tooltip = "Tooltip"
+
   // export let events = {};
 
 
+  let show = () => {
+    tippyComponent.$set( { content: tooltip })
+  }
+
   export let options = {
     theme: theme,
-    trigger: "focus",
-    placement: "bottom-start",
+    //trigger: "focus",
+    placement: position,
     interactive: true,
     offset: [0, 0],
     maxWidth: 'none',
@@ -49,6 +61,7 @@
       dispatch("hide");
     },
     onShow: (instance)=> {
+      show();
       dispatch("show");
     }
   }
@@ -85,7 +98,7 @@
 </script>
 
 {#if mounted}
-<div use:popover={template} {style} class={classes} {id}>
+<div use:popover={TooltipTemplate} {style} class={classes} {id}>
   <slot/> 
 </div>
 {/if}
