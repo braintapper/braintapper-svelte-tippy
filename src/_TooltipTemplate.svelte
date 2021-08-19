@@ -2,7 +2,7 @@
   export let content = undefined;
 </script>
 <div>
-  {content}
+  {@html content}
 </div>
 <style>
   div {
