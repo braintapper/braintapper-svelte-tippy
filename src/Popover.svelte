@@ -24,7 +24,7 @@
   export let style = undefined;
   export let classes = undefined;
   export let id = undefined;
-
+  export let delay = 0;
 
   // export let events = {};
 
@@ -34,6 +34,7 @@
     trigger: "click",
     placement: "bottom-end",
     interactive: true,
+    delay: delay,    
     popperOptions: {
       modifiers: [
         {

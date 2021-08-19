@@ -29,6 +29,7 @@
   export let style = undefined;
   export let classes = undefined;
   export let id = undefined;
+  export let delay = 100;
 
 
   export let position = "bottom-start"
@@ -46,6 +47,7 @@
     //trigger: "focus",
     placement: position,
     interactive: true,
+    delay: delay,
     offset: [0, 0],
     maxWidth: 'none',
     onCreate: (instance) => {
