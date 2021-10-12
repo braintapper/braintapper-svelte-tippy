@@ -6,7 +6,7 @@
   import { createEventDispatcher, onMount } from "svelte";
   let dispatch = createEventDispatcher();
 
-  import TippyCss from "./Css.svelte";
+  import"./tippy.css";
   import TooltipTemplate from "./_TooltipTemplate.svelte";
   import tippy from 'tippy.js';
 

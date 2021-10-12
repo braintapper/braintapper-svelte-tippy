@@ -1,7 +1,5 @@
 export { default as TippyBase }
 from './Base.svelte';
-export { default as TippyCss }
-from './Css.svelte';
 export { default as TippyAutocomplete }
 from './Autocomplete.svelte';
 export { default as TippyIconMenu }

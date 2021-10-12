@@ -1,4 +1,4 @@
-<style>
+
 :global(:root) {
   --tooltip-background: var(--black);
   --tooltip-foreground: var(--foreground-dark); }
@@ -121,4 +121,3 @@
 :global(.tippy-box .tippy-content) {
   padding: 0px; }
 
-</style>
